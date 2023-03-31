@@ -2,7 +2,7 @@ from dummy_api_plugin import DummyApiPlugin
 
 
 def main():
-    plugin = DummyApiPlugin(...)
+    plugin = DummyApiPlugin()
     plugin.run()
 
 
