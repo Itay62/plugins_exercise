@@ -2,6 +2,7 @@ from plugin import Plugin
 import requests
 import json
 from settings import dummyApiToken
+POSTS_LIMIT = 50
 
 
 class DummyApiPlugin(Plugin):
@@ -27,6 +28,9 @@ class DummyApiPlugin(Plugin):
             return False
 
     def collect(self):
+        """ Connects with "https://dummyapi.io/data/v1" to get all users and some posts with their comments
+        """
+
         url = "https://dummyapi.io/data/v1"
         users_url = f"{url}/user"
         posts_url = f"{url}/post"
@@ -66,7 +70,7 @@ class DummyApiPlugin(Plugin):
 
         # Post's collection
         response = requests.get(
-            posts_url, headers=headers, params={"limit": 50})
+            posts_url, headers=headers, params={"limit": POSTS_LIMIT})
 
         if response.status_code == 200:
             response_json = response.json()
